@@ -18,18 +18,21 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import testBase.BaseClass;
 
-public class GetAllRepos1 extends BaseClass {
+public class GitHubRepositoriesJSONPath extends BaseClass {
 
-	public GetAllRepos1() throws IOException {
+	public GitHubRepositoriesJSONPath() throws IOException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	@Test(priority = 1)
 	public void getAllRepositories() {
-		String str = given().auth().preemptive().basic(prop.getProperty("unameGit"), prop.getProperty("pwdGit")).when()
-				.get().getBody().asString();
-		System.out.println(str);
+		//Get all repositories having owner as 'brijgit1'
+		given().auth().preemptive().basic(prop.getProperty("unameGit"), prop.getProperty("pwdGit")).when()
+				.get()
+				.then()
+				.extract();
+				//.jsonPath("owner.findAll{it.description=='This is a test repository created by RestAssured'}");
 
 		// Get total number of Repositories
 
@@ -37,37 +40,35 @@ public class GetAllRepos1 extends BaseClass {
 
 	@Test(priority = 1)
 	public void getTotalCountOfRepositories() {
-		Response resp=given()
-				.auth().preemptive()
-		.basic(prop.getProperty("unameGit"), prop.getProperty("pwdGit"))
-		.when().get();
-		String respInString=resp.asString();
+		Response resp = given().auth().preemptive().basic(prop.getProperty("unameGit"), prop.getProperty("pwdGit"))
+				.when().get();
+		String respInString = resp.asString();
 		System.out.println(respInString);
 		Assert.assertTrue(respInString.contains("id"));
-		
-		JsonPath jp=resp.jsonPath();
+
+		JsonPath jp = resp.jsonPath();
 		// Get total number of Repositories
 		/*
 		 * List<String> listOfRepos=jp.getList("$");
 		 * System.out.println(listOfRepos.size());
 		 */
-		
-		//Print all repositories names
-		List<String> nameOfRepos=jp.getList("name");
-		System.out.println("Names of Repo using getList(): "+nameOfRepos);
-		
-		//Iterate and print all names of Repositories
-		for(String i:nameOfRepos) {
+
+		// Print all repositories names
+		List<String> nameOfRepos = jp.getList("name");
+		System.out.println("Names of Repo using getList(): " + nameOfRepos);
+
+		// Iterate and print all names of Repositories
+		for (String i : nameOfRepos) {
 			System.out.println(i);
 		}
-		
-		//Print name of second repository
-		System.out.println("Name of Second Repo: "+nameOfRepos.get(1));
-		
-		//Print all repositories names using getString
-				String names=jp.getString("name");
-				System.out.println("Names are: "+names);
-				System.out.println("Second repository name: "+jp.getString("name[1]"));
+
+		// Print name of second repository
+		System.out.println("Name of Second Repo: " + nameOfRepos.get(1));
+
+		// Print all repositories names using getString
+		String names = jp.getString("name");
+		System.out.println("Names are: " + names);
+		System.out.println("Second repository name: " + jp.getString("name[1]"));
 
 	}
 
@@ -99,19 +100,16 @@ public class GetAllRepos1 extends BaseClass {
 				.delete(prop.getProperty("deleRepoURI")).then().statusCode(204);
 		System.out.println("Repo deleted with name: " + name);
 	}
-	
+
 	@Test(priority = 6)
 	public void getPlace() {
-		Response resp=given()
-		.queryParam("input", "Xoriant%20Pune")
-		.queryParam("inputtype", "textquery")
-		.queryParam("fields", "photos,formatted_address,name,rating,opening_hours,geometry")
-		.queryParam("key", "AIzaSyB9qQjFNlehW5ZXG4ebIHY1F2dGQUSaFOk")
-		.when()
-		.get(prop.getProperty("googlePlaces"));
-		
-		String respInStr=resp.getBody().asString();
-		JsonPath jp=resp.jsonPath();
+		Response resp = given().queryParam("input", "Xoriant%20Pune").queryParam("inputtype", "textquery")
+				.queryParam("fields", "photos,formatted_address,name,rating,opening_hours,geometry")
+				.queryParam("key", "AIzaSyB9qQjFNlehW5ZXG4ebIHY1F2dGQUSaFOk").when()
+				.get(prop.getProperty("googlePlaces"));
+
+		String respInStr = resp.getBody().asString();
+		JsonPath jp = resp.jsonPath();
 		System.out.println(respInStr);
 
 	}

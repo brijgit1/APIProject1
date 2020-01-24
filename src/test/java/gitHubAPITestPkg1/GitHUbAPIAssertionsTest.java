@@ -3,6 +3,9 @@ package gitHubAPITestPkg1;
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
+
+import java.io.IOException;
+
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
 import org.json.JSONObject;
@@ -13,8 +16,14 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import testBase.BaseClass;
+import testBase.BaseClass2;
 
-public class GitHUbAPIAssertionsTest extends BaseClass {
+public class GitHUbAPIAssertionsTest extends BaseClass2 {
+
+	public GitHUbAPIAssertionsTest() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Test(priority = 1)
 	public void getAllRepositories() {

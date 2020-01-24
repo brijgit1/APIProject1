@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="2314" started-at="2020-01-22T14:07:09 IST" finished-at="2020-01-22T14:07:11 IST">
+  <suite name="Default suite" duration-ms="1938" started-at="2020-01-24T13:01:31 IST" finished-at="2020-01-24T13:01:33 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="2314" started-at="2020-01-22T14:07:09 IST" finished-at="2020-01-22T14:07:11 IST">
-      <class name="googleplacesAPI.GetPlace">
-        <test-method status="PASS" signature="getPlace()[pri:0, instance:googleplacesAPI.GetPlace@6e6c3152]" name="getPlace" duration-ms="2282" started-at="2020-01-22T14:07:09 IST" finished-at="2020-01-22T14:07:11 IST">
+    <test name="Default test" duration-ms="1938" started-at="2020-01-24T13:01:31 IST" finished-at="2020-01-24T13:01:33 IST">
+      <class name="gitHubAPITestPkg1.GitHubRepoJSONAssert1">
+        <test-method status="PASS" signature="getAllRepositoriesLogParams()[pri:1, instance:gitHubAPITestPkg1.GitHubRepoJSONAssert1@291b4bf5]" name="getAllRepositoriesLogParams" duration-ms="1907" started-at="2020-01-24T13:01:31 IST" finished-at="2020-01-24T13:01:33 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getPlace -->
-      </class> <!-- googleplacesAPI.GetPlace -->
+        </test-method> <!-- getAllRepositoriesLogParams -->
+      </class> <!-- gitHubAPITestPkg1.GitHubRepoJSONAssert1 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

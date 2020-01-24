@@ -13,24 +13,17 @@ import org.testng.annotations.BeforeClass;
 
 import io.restassured.RestAssured;
 
-public class BaseClass {
+public class BaseClass2 {
 	public static String name;
 	public Properties prop;
 
-	public BaseClass() throws IOException {
-		FileInputStream fis =new FileInputStream("./src/main/resources/resiurce/config.properties");
+	public BaseClass2() throws IOException {
+		FileInputStream fis=new FileInputStream("./src/main/resources/configuration/config.properties");
 		prop=new Properties();
 		prop.load(fis);
-		RestAssured.baseURI = "https://api.github.com"; 
-		RestAssured.basePath = "/user/repos"; 
+		RestAssured.baseURI = "https://api.github.com";
+		RestAssured.basePath = "/user/repos";
 		name = "Repo" + System.currentTimeMillis();
 	}
-
-	/*
-	 * @BeforeClass public void setup() {
-	 * 
-	 * RestAssured.baseURI = "https://api.github.com"; RestAssured.basePath =
-	 * "/user/repos"; name = "Repo" + System.currentTimeMillis(); }
-	 */
 
 }
